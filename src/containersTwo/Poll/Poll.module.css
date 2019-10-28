@@ -1,0 +1,17 @@
+.Poll {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  background: rgb(18, 73, 32);
+  color:white;
+  justify-items: center;
+}
+.PollWraper{
+  width: 600px;
+}
+.PollWraper .colorOne{
+  background: red;
+}
+.PollWraper .colorTwo{
+  background: white;
+}

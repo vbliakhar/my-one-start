@@ -1,0 +1,22 @@
+.Send {
+  background: blue;
+  text-align: center;
+  size: 20px;
+  color: white;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 600px;
+  height: 50px;
+  
+}
+
+.success{
+  background: green;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.error{
+  background: red;
+  border-radius: 10px;
+  cursor: pointer;
+}
