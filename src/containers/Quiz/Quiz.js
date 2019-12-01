@@ -2,11 +2,10 @@ import React, {Component} from 'react'
 import classes from './Quiz.module.css'
 import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz"
 import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz"
-
 class Quiz extends Component{
     state= {
 				results:{},
-				isFinished:false,
+				isFinished:true,
 				activeQuestion:0,
 				answerState:null, //{[id]: "success" "error"}
         quiz:[
