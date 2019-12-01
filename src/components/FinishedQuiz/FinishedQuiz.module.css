@@ -23,6 +23,7 @@ i{
   color:rgb(104, 37, 37);
 
 }
+
 .cross::after{
   content: "✔";
   color: greenyellow;
