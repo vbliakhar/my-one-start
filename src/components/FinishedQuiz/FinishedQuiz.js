@@ -15,7 +15,6 @@ const FinishedQuiz =(props)=>{
           const cls=[
             classes[props.results[quiz.id]==="error"?"error":"cross"]
           ]
-         
           return(
             <li
               key={index}
@@ -38,10 +37,9 @@ const FinishedQuiz =(props)=>{
             Repit
           </Button>  
           <Button
-           onClick={props.onRetry}
            type="success"
           >
-            Go to the test list            
+            Go to the test list
           </Button>
       </div>
     </div>

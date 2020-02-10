@@ -5,7 +5,7 @@ import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz"
 class Quiz extends Component{
     state= {
 				results:{},
-				isFinished:true,
+				isFinished:false,
 				activeQuestion:0,
 				answerState:null, //{[id]: "success" "error"}
         quiz:[
@@ -107,7 +107,7 @@ class Quiz extends Component{
 											quizlength={this.state.quiz.length}
 											answerNumber={this.state.activeQuestion+1}
 											state={this.state.answerState}
-								
+										 p
                     />}
                 </div>
                 

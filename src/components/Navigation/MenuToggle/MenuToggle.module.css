@@ -1,0 +1,43 @@
+.MenuToggle {
+  position:fixed;
+  top:40;
+  left:40;
+  font-size: 20px;
+  cursor: pointer;
+  color:white;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 100;
+}
+
+.MenuToggle:hover{
+  opacity: 7;
+}
+
+.MenuToggle.open{
+  left:320px; 
+}
+/* три полоск меню */
+.fabars{
+  position: absolute;
+  top:15px;
+  border-bottom: 17px double white; 
+  border-top: 6px solid white; 
+  content:" ";
+  height: 5px; 
+  width:30px;
+}
+/* Хрестик */
+.fatimes::before, .fatimes:after{
+  position: absolute;
+  top:15px;
+  content: ' ';
+  height: 30px;
+  width: 5px;
+  background-color: white;
+}
+.fatimes:before {
+transform: rotate(45deg);
+}
+.fatimes:after {
+transform: rotate(-45deg);
+}
