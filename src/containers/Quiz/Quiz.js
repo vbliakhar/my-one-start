@@ -10,29 +10,51 @@ class Quiz extends Component{
 				answerState:null, //{[id]: "success" "error"}
         quiz:[
 					{
-						question:"Where you work?",
-						rightAnswerId: 2,
+						question:"Яке твоє імя?",
+						rightAnswerId: 1,
 						id:1,
 						answers:[
-							{text: "programing" ,id: 1},
-							{text: "operator vuroby" ,id: 2},
-							{text: "igenier" ,id: 3},
-							{text: "doctor" ,id: 4},
-							{text: "teacher" ,id: 5},
+							{text: "Сергій" ,id: 1},
+							{text: "Вася" ,id: 2},
+							{text: "Коля" ,id: 3},
+							{text: "Льоша" ,id: 4},
+							{text: "Петя" ,id: 5},
 						]
 					},
-					{
-						question:"What is your dream?",
-						rightAnswerId: 1,
-						id:2,
-						answers:[
-							{text: "Children" ,id: 1},
-							{text: "house" ,id: 2},
-							{text: "work - programming" ,id: 3},
-							{text: "i dont no" ,id: 4},
-							{text: "rest" ,id: 5},
-						]
-					},
+					// {
+					// 	question:"Скільки тобі років?",
+					// 	rightAnswerId: 3,
+					// 	id:2,
+					// 	answers:[
+					// 		{text: "24" ,id: 1},
+					// 		{text: "29" ,id: 2},
+					// 		{text: "31" ,id: 3},
+					// 		{text: "38" ,id: 4},
+					// 		{text: "45" ,id: 5},
+					// 	]
+					// },
+					// {
+					// 	question:"Де ти  працюєш?",
+					// 	rightAnswerId: 3,
+					// 	id:3,
+					// 	answers:[
+					// 		{text: "Запоріж сталь" ,id: 1},
+					// 		{text: "Завод тесла" ,id: 2},
+					// 		{text: "Шкода Авто" ,id: 3},
+					// 		{text: "Безробітний" ,id: 4},
+					// 	]
+					// },
+					// {
+					// 	question:"Скільки років ти  ще будеш  працювати  на  заводі?",
+					// 	rightAnswerId: 4,
+					// 	id:4,
+					// 	answers:[
+					// 		{text: "1 рік" ,id: 1},
+					// 		{text: "2 роки" ,id: 2},
+					// 		{text: "5 років" ,id: 3},
+					// 		{text: "10  років" ,id: 4},
+					// 	]
+					// },
 					],
         
 		}
@@ -87,18 +109,21 @@ class Quiz extends Component{
 				answerState:null,
 			})
 		}
-		
+		componentDidMount(){
+			console.log(this.props.match.params.id)
+		}
     render(){
         return(
             <div className={classes.Quiz}>
                 
                 <div className={classes.QuizWraper}>
-                     <h1>Quiz</h1>
+                     <h1>Тест для  Сергія</h1>
 										 {this.state.isFinished?
 										 <FinishedQuiz
 												results={this.state.results}
 												quiz={this.state.quiz}
 												onRetry={this.retryHandler}
+												
 										 />:
                     <ActiveQuiz
 											answers={this.state.quiz[this.state.activeQuestion].answers}
