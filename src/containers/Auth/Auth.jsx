@@ -41,7 +41,7 @@ class Auth extends Component{
   registerHandler =()=>{
 
   }
-  sumitHandler =(event)=>{
+  submitHandler =(event)=>{
     event.preventdefault()
   }
   validateControl(value, validation){
@@ -113,9 +113,9 @@ class Auth extends Component{
         <div>
          <h1>Authorization</h1>
          <form 
-          className={classes.AuthForm}
+          className={classes.AuthForm.module}
           action=" " 
-          onSubmit={this.sumitHandler
+          onSubmit={this.submitHandler
           }>
             {this.renderInputs()}
           <Button
