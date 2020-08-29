@@ -2,25 +2,29 @@ import React, { Component } from "react";
 import classes from "./Quiz.module.css";
 import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz";
 import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz";
+import axios from "axios";
+import Loader from "../../components/UI/Loader/Loader";
+
 class Quiz extends Component {
   state = {
     results: {},
     isFinished: false,
     activeQuestion: 0,
     answerState: null, //{[id]: "success" "error"}
+    loading: true,
     quiz: [
-      {
-        question: "Яке твоє імя?",
-        rightAnswerId: 1,
-        id: 1,
-        answers: [
-          { text: "Сергій", id: 1 },
-          { text: "Вася", id: 2 },
-          { text: "Коля", id: 3 },
-          { text: "Льоша", id: 4 },
-          { text: "Петя", id: 5 },
-        ],
-      },
+      // {
+      //   question: "Яке твоє імя?",
+      //   rightAnswerId: 1,
+      //   id: 1,
+      //   answers: [
+      //     { text: "Сергій", id: 1 },
+      //     { text: "Вася", id: 2 },
+      //     { text: "Коля", id: 3 },
+      //     { text: "Льоша", id: 4 },
+      //     { text: "Петя", id: 5 },
+      //   ],
+      // },
       // {
       // 	question:"Скільки тобі років?",
       // 	rightAnswerId: 3,
@@ -54,7 +58,7 @@ class Quiz extends Component {
       // 		{text: "5 років" ,id: 3},
       // 		{text: "10  років" ,id: 4},
       // 	]
-      // },
+      //   // },
     ],
   };
   onAnswerClickHandler = (answerId) => {
@@ -102,15 +106,30 @@ class Quiz extends Component {
       answerState: null,
     });
   };
-  componentDidMount() {
-    console.log(this.props.match.params.id);
+  async componentDidMount() {
+    try {
+      const response = await axios.get(
+        `https://react-quiz-29aa3.firebaseio.com/quizes/${this.props.match.params.id}.json`
+      );
+      const quiz = response.data;
+
+      this.setState({
+        quiz,
+        loading: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(this.props.match.params.id + "test-quiz");
   }
   render() {
     return (
       <div className={classes.Quiz}>
         <div className={classes.QuizWraper}>
-          <h1>Тест для Сергія</h1>
-          {this.state.isFinished ? (
+          <h1>Список тестів</h1>
+          {this.state.loading ? (
+            <Loader />
+          ) : this.state.isFinished ? (
             <FinishedQuiz
               results={this.state.results}
               quiz={this.state.quiz}
@@ -118,13 +137,20 @@ class Quiz extends Component {
             />
           ) : (
             <ActiveQuiz
-              answers={this.state.quiz[this.state.activeQuestion].answers}
-              question={this.state.quiz[this.state.activeQuestion].question}
+              answers={
+                this.state.quiz[this.state.activeQuestion]
+                  ? this.state.quiz[this.state.activeQuestion].answers
+                  : []
+              }
+              question={
+                this.state.quiz[this.state.activeQuestion]
+                  ? this.state.quiz[this.state.activeQuestion].question
+                  : []
+              }
               onAnswerClick={this.onAnswerClickHandler}
               quizlength={this.state.quiz.length}
               answerNumber={this.state.activeQuestion + 1}
               state={this.state.answerState}
-              p
             />
           )}
         </div>

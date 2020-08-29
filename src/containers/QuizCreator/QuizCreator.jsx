@@ -146,8 +146,9 @@ class QuizCreator extends Component {
   }
 
   selectChangehandler = (event) => {
+    const a = +event.target.value;
     this.setState({
-      rightAnswerId: event.target.value,
+      rightAnswerId: a, // error search
     });
   };
   //-----------------------Render----------------------------------------//
@@ -173,6 +174,7 @@ class QuizCreator extends Component {
             {this.renderControls()}
 
             {select}
+
             <Button
               type="primary"
               onClick={this.addQuestionHandler}
