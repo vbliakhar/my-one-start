@@ -33,8 +33,9 @@ const FinishedQuiz =(props)=>{
       <div>
         <Button 
           onClick={props.onRetry}
-          type="primary"  
+          type="primary"
           >
+          
             Repit
           </Button>  
           <Link to={'/'}>

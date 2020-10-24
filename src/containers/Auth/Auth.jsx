@@ -5,6 +5,7 @@ import Input from "../../components/UI/Input/Input";
 import is from "is_js";
 
 import axios from "axios";
+import { connect } from "react-redux";
 
 class Auth extends Component {
   state = {
@@ -55,10 +56,12 @@ class Auth extends Component {
     }
   };
   registerHandler = async () => {
+    console.log("REPIT")
     const authData = {
       email: this.state.formControls.email.value,
       password: this.state.formControls.password.value,
       returnSecureToken: true,
+      
     };
     try {
       const response = await axios.post(
@@ -70,6 +73,9 @@ class Auth extends Component {
       console.log(e);
     }
   };
+  test = () =>{
+    console.log("REPIT")
+  }
   submitHandler = (event) => {
     event.preventdefault();
   };
@@ -158,7 +164,7 @@ class Auth extends Component {
             </Button>
             <Button
               type="primary"
-              onClick={this.registerHandler}
+              onClick={this.test}
               disabled={!this.state.isFormValid}
             >
               Sign up
@@ -169,4 +175,10 @@ class Auth extends Component {
     );
   }
 }
-export default Auth;
+function mapStateToProps(state) {
+  return {};
+}
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
